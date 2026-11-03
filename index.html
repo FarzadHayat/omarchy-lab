@@ -30,6 +30,7 @@
       s.setProperty("--fg", t.fg); s.setProperty("--fg2", t.fg2);
       s.setProperty("--accent", t.accent); s.setProperty("--red", t.red);
       document.documentElement.dataset.mode = t.mode;
+      document.documentElement.classList.add("js");
     })();
   </script>
   <script src="app.js" defer></script>
@@ -38,31 +39,44 @@
   <a class="skip" href="#projects">Skip to projects</a>
 
   <header class="bar">
-    <nav class="workspaces" aria-label="Sections">
-      <a href="#top">1<span class="sr-only"> Top</span></a>
-      <a href="#projects">2<span class="sr-only"> Projects</span></a>
-      <a href="#contributions">3<span class="sr-only"> Contributions</span></a>
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>omarchy<span class="brand-dim">.lab</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#contributions">Upstream</a>
     </nav>
-    <span class="bar-title" aria-hidden="true">omarchy.farzadhayat.dev</span>
     <div class="theme-picker">
       <label for="theme">Theme</label>
       <select id="theme"></select>
     </div>
   </header>
 
+  <div class="glow" aria-hidden="true"></div>
+
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
-      <p class="prompt"><span class="user">farzad@omarchy</span> <span class="path">~/lab</span> <span class="sign">$</span> ls built-for-omarchy/</p>
-      <h1 id="hero-title">Things I built to make <span class="hl">Omarchy</span> feel like mine.</h1>
-      <p class="lede">Cursors that recolor with your theme, a key map that floats over your desktop, a new tab page, a theme and a keyboard. All open source. Pick one, copy the install line, and it's yours.</p>
-      <p class="hint">Try the <a href="#theme">theme menu</a> up top. This page recolors like Omarchy does.</p>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>5 projects · 9 merged PRs · all open source</p>
+        <h1 id="hero-title">Things I built to make <span class="hl">Omarchy</span> feel like mine.</h1>
+        <p class="lede">Cursors that recolor with your theme, a key map that floats over your desktop, a new tab page, a theme and a keyboard. Pick one, copy the install line, and it's yours.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">Browse projects</a>
+          <a class="btn" href="https://github.com/FarzadHayat">GitHub profile</a>
+        </div>
+        <p class="hint">Tip: switch the <a href="#theme">theme</a> up top. The whole page recolors, just like Omarchy.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <img class="card-a" src="img/australia.webp" width="1400" height="780" alt="">
+        <img class="card-b" src="img/newtab.webp" width="1400" height="801" alt="">
+        <img class="card-c" src="img/overlay.webp" width="1400" height="788" alt="">
+        <img class="hero-cursor" src="img/cursors-demo.gif" width="93" height="120" alt="">
+      </div>
     </section>
 
     <section id="projects" class="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title" class="section-title"><span aria-hidden="true">## </span>Projects</h2>
+      <div class="section-head"><p class="kicker">Projects</p><h2 id="projects-title" class="section-title">Install any of them in a minute.</h2></div>
 
       <!-- Pixel cursors -->
-      <article class="win" aria-labelledby="p-cursors">
+      <article class="win reveal" aria-labelledby="p-cursors">
         <div class="win-bar"><span class="win-name">omarchy-pixel-cursors</span><span class="win-tag">Python · Hyprcursor</span></div>
         <div class="win-body">
           <figure class="shot shot-cursors">
@@ -91,7 +105,7 @@
       </article>
 
       <!-- Omakeys overlay -->
-      <article class="win" aria-labelledby="p-overlay">
+      <article class="win reveal" aria-labelledby="p-overlay">
         <div class="win-bar"><span class="win-name">omakeys-overlay</span><span class="win-tag">Rust · Wayland</span></div>
         <div class="win-body">
           <figure class="shot">
@@ -121,7 +135,7 @@ cd omakeys-overlay
       </article>
 
       <!-- New tab -->
-      <article class="win" aria-labelledby="p-newtab">
+      <article class="win reveal" aria-labelledby="p-newtab">
         <div class="win-bar"><span class="win-name">omarchy-newtab</span><span class="win-tag">Chrome extension</span></div>
         <div class="win-body">
           <figure class="shot">
@@ -150,7 +164,7 @@ bin/install</code></pre>
       </article>
 
       <!-- Australia theme -->
-      <article class="win" aria-labelledby="p-australia">
+      <article class="win reveal" aria-labelledby="p-australia">
         <div class="win-bar"><span class="win-name">omarchy-australia-theme</span><span class="win-tag">Theme</span></div>
         <div class="win-body">
           <figure class="shot">
@@ -180,7 +194,7 @@ bin/install</code></pre>
       </article>
 
       <!-- Omakeys keyboard -->
-      <article class="win" aria-labelledby="p-omakeys">
+      <article class="win reveal" aria-labelledby="p-omakeys">
         <div class="win-bar"><span class="win-name">omakeys</span><span class="win-tag">QMK · VIA firmware</span></div>
         <div class="win-body">
           <figure class="shot">
@@ -213,8 +227,7 @@ bin/install</code></pre>
     </section>
 
     <section id="contributions" class="contrib" aria-labelledby="contrib-title">
-      <h2 id="contrib-title" class="section-title"><span aria-hidden="true">## </span>Merged upstream</h2>
-      <p class="lede small">Fixes and features I added to other people's Omarchy projects.</p>
+      <div class="section-head"><p class="kicker">Merged upstream</p><h2 id="contrib-title" class="section-title">Fixes and features in other people's Omarchy projects.</h2></div>
       <ul class="prs">
         <li><a href="https://github.com/tornikegomareli/omarchy-spaces">omarchy-spaces</a> <span class="what">see the apps on every workspace</span>
           <ul>
