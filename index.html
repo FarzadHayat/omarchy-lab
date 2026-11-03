@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farzad's Omarchy Lab: cursors, themes, overlays and more</title>
+  <meta name="description" content="Things Farzad Hayat built for Omarchy: animated pixel cursors, a live key map overlay, a themed new tab page, the Australia theme and the Omakeys keyboard. Each one installs in a minute.">
+  <meta name="theme-color" content="#1a1b26">
+  <link rel="canonical" href="https://omarchy.farzadhayat.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://omarchy.farzadhayat.dev/">
+  <meta property="og:title" content="Farzad's Omarchy Lab">
+  <meta property="og:description" content="Pixel cursors, a live key map overlay, a themed new tab page, a theme and a keyboard. Built for Omarchy, ready to install.">
+  <meta property="og:image" content="https://omarchy.farzadhayat.dev/img/social.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="themes.js"></script>
+  <script>
+    // Apply the saved theme before first paint so the page never flashes.
+    (function () {
+      var name = null;
+      try { name = localStorage.getItem("omarchy-lab-theme"); } catch (e) {}
+      var t = window.OMARCHY_THEMES[name] || window.OMARCHY_THEMES["tokyo-night"];
+      var s = document.documentElement.style;
+      s.setProperty("--bg", t.bg); s.setProperty("--bg2", t.bg2); s.setProperty("--bg3", t.bg3);
+      s.setProperty("--fg", t.fg); s.setProperty("--fg2", t.fg2);
+      s.setProperty("--accent", t.accent); s.setProperty("--red", t.red);
+      document.documentElement.dataset.mode = t.mode;
+    })();
+  </script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#projects">Skip to projects</a>
+
+  <header class="bar">
+    <nav class="workspaces" aria-label="Sections">
+      <a href="#top">1<span class="sr-only"> Top</span></a>
+      <a href="#projects">2<span class="sr-only"> Projects</span></a>
+      <a href="#contributions">3<span class="sr-only"> Contributions</span></a>
+    </nav>
+    <span class="bar-title" aria-hidden="true">omarchy.farzadhayat.dev</span>
+    <div class="theme-picker">
+      <label for="theme">Theme</label>
+      <select id="theme"></select>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="prompt"><span class="user">farzad@omarchy</span> <span class="path">~/lab</span> <span class="sign">$</span> ls built-for-omarchy/</p>
+      <h1 id="hero-title">Things I built to make <span class="hl">Omarchy</span> feel like mine.</h1>
+      <p class="lede">Cursors that recolor with your theme, a key map that floats over your desktop, a new tab page, a theme and a keyboard. All open source. Pick one, copy the install line, and it's yours.</p>
+      <p class="hint">Try the <a href="#theme">theme menu</a> up top. This page recolors like Omarchy does.</p>
+    </section>
+
+    <section id="projects" class="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="section-title"><span aria-hidden="true">## </span>Projects</h2>
+
+      <!-- Pixel cursors -->
+      <article class="win" aria-labelledby="p-cursors">
+        <div class="win-bar"><span class="win-name">omarchy-pixel-cursors</span><span class="win-tag">Python · Hyprcursor</span></div>
+        <div class="win-body">
+          <figure class="shot shot-cursors">
+            <img src="img/cursors-sheet.webp" width="1120" height="725" loading="lazy" alt="Grid of 8-bit pixel art cursors: arrows, hands, text beams, resize arrows and an hourglass, all drawn in the theme's colors.">
+            <img class="demo" src="img/cursors-demo.gif" width="93" height="120" alt="A pixel arrow cursor changing color as the Omarchy theme switches.">
+          </figure>
+          <div class="info">
+            <h3 id="p-cursors">Omarchy Pixel Cursors</h3>
+            <p>Animated 8-bit cursors that take their colors from your theme. Switch themes and the cursor rebuilds itself to match.</p>
+            <ul>
+              <li>Three styles: accent, light or dark body.</li>
+              <li>Animated hourglass and spinning progress ring.</li>
+              <li>Pixels stay square at any display scale.</li>
+              <li>Pick style and size from Omarchy menu, Style &gt; Cursor.</li>
+            </ul>
+            <div class="install">
+              <p class="install-label">Install</p>
+              <pre><code>curl -fsSL https://cursors.farzadhayat.dev/install | bash</code></pre>
+            </div>
+            <p class="links">
+              <a class="btn primary" href="https://cursors.farzadhayat.dev/">Try them in your browser</a>
+              <a class="btn" href="https://github.com/FarzadHayat/omarchy-pixel-cursors">Source on GitHub<span class="sr-only"> for Omarchy Pixel Cursors</span></a>
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Omakeys overlay -->
+      <article class="win" aria-labelledby="p-overlay">
+        <div class="win-bar"><span class="win-name">omakeys-overlay</span><span class="win-tag">Rust · Wayland</span></div>
+        <div class="win-body">
+          <figure class="shot">
+            <img src="img/overlay.webp" width="1400" height="788" loading="lazy" alt="Omarchy desktop with a translucent keyboard map floating at the bottom, showing what each key does on the current layer.">
+          </figure>
+          <div class="info">
+            <h3 id="p-overlay">Omakeys Overlay</h3>
+            <p>A floating live key map. See what every key does on the layer you are on.</p>
+            <ul>
+              <li>Works with any keyboard. Keys light up as you type.</li>
+              <li>QMK boards get the full layer map from one small TOML file.</li>
+              <li>Hold Super, Ctrl or Alt to see your real Hyprland binds.</li>
+              <li>Follows your Omarchy theme, no restart.</li>
+            </ul>
+            <div class="install">
+              <p class="install-label">Install</p>
+              <pre><code>git clone https://github.com/FarzadHayat/omakeys-overlay
+cd omakeys-overlay
+./dist/install-desktop.sh</code></pre>
+              <p class="note">Asks for <code>sudo</code> once to read keyboards. Log out and in, then run <code>omakeys doctor</code>.</p>
+            </div>
+            <p class="links">
+              <a class="btn primary" href="https://github.com/FarzadHayat/omakeys-overlay">Source on GitHub<span class="sr-only"> for Omakeys Overlay</span></a>
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- New tab -->
+      <article class="win" aria-labelledby="p-newtab">
+        <div class="win-bar"><span class="win-name">omarchy-newtab</span><span class="win-tag">Chrome extension</span></div>
+        <div class="win-body">
+          <figure class="shot">
+            <img src="img/newtab.webp" width="1400" height="801" loading="lazy" alt="A dark new tab page in the Thunderstruck theme with a search box and numbered groups of links.">
+          </figure>
+          <div class="info">
+            <h3 id="p-newtab">Omarchy New Tab</h3>
+            <p>A calm, keyboard-first new tab page for Chrome and Chromium that matches your Omarchy theme.</p>
+            <ul>
+              <li>Stays in sync when you switch themes, wallpaper included.</li>
+              <li>Start typing to search your links. Enter opens the top match.</li>
+              <li>Keys 1 to 9 open links. [ and ] switch groups.</li>
+            </ul>
+            <div class="install">
+              <p class="install-label">Install</p>
+              <pre><code>git clone https://github.com/FarzadHayat/omarchy-newtab.git
+cd omarchy-newtab
+bin/install</code></pre>
+              <p class="note">Then open <code>chrome://extensions</code>, turn on Developer mode, click Load unpacked and pick the folder.</p>
+            </div>
+            <p class="links">
+              <a class="btn primary" href="https://github.com/FarzadHayat/omarchy-newtab">Source on GitHub<span class="sr-only"> for Omarchy New Tab</span></a>
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Australia theme -->
+      <article class="win" aria-labelledby="p-australia">
+        <div class="win-bar"><span class="win-name">omarchy-australia-theme</span><span class="win-tag">Theme</span></div>
+        <div class="win-body">
+          <figure class="shot">
+            <img src="img/australia.webp" width="1400" height="780" loading="lazy" alt="Omarchy desktop in the Australia theme: deep navy background, warm sand text and golden window borders.">
+          </figure>
+          <div class="info">
+            <h3 id="p-australia">Australia Theme</h3>
+            <p>Navy Southern Cross night, golden wattle and Uluru ochre. Comes with four wallpapers.</p>
+            <ul class="swatches" aria-label="Palette">
+              <li><span style="background:#121c2b"></span>Night navy <code>#121c2b</code></li>
+              <li><span style="background:#e8d4b0"></span>Desert bone <code>#e8d4b0</code></li>
+              <li><span style="background:#e8b84a"></span>Golden wattle <code>#e8b84a</code></li>
+              <li><span style="background:#c94b32"></span>Uluru ochre <code>#c94b32</code></li>
+              <li><span style="background:#6f8f5a"></span>Eucalyptus <code>#6f8f5a</code></li>
+              <li><span style="background:#3aa89a"></span>Reef <code>#3aa89a</code></li>
+            </ul>
+            <div class="install">
+              <p class="install-label">Install</p>
+              <pre><code>omarchy theme install https://github.com/FarzadHayat/omarchy-australia-theme</code></pre>
+              <p class="note">Or Omarchy menu, Install &gt; Style &gt; Theme, and paste the URL. Preview it here: pick "australia" in the theme menu.</p>
+            </div>
+            <p class="links">
+              <a class="btn primary" href="https://github.com/FarzadHayat/omarchy-australia-theme">Source on GitHub<span class="sr-only"> for Australia Theme</span></a>
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Omakeys keyboard -->
+      <article class="win" aria-labelledby="p-omakeys">
+        <div class="win-bar"><span class="win-name">omakeys</span><span class="win-tag">QMK · VIA firmware</span></div>
+        <div class="win-body">
+          <figure class="shot">
+            <img src="img/omakeys.webp" width="1400" height="757" loading="lazy" alt="Layout guide for the 36-key Omakeys keyboard, showing the QWERTY, symbol, navigation, function and adjust layers.">
+          </figure>
+          <div class="info">
+            <h3 id="p-omakeys">Omakeys Keyboard</h3>
+            <p>Beginner-friendly firmware for a 36-key keyboard, built on the LoremIpsum36 kit. Pairs with the overlay above.</p>
+            <ul>
+              <li>QWERTY out of the box, five clear layers.</li>
+              <li>Remap anything in your browser with VIA.</li>
+              <li>Tap Q or Enter to type, hold for Ctrl.</li>
+            </ul>
+            <div class="install">
+              <p class="install-label">Flash it</p>
+              <ol class="steps">
+                <li>Download <code>Omakeys.uf2</code> from the latest release.</li>
+                <li>Hold the top-left key while plugging in. An <code>RPI-RP2</code> drive appears.</li>
+                <li>Drag the file onto the drive.</li>
+                <li>After it reboots, tap <code>rset</code>: hold SYM, tap the left inner thumb, tap the top-right key. This loads the factory layout.</li>
+              </ol>
+            </div>
+            <p class="links">
+              <a class="btn primary" href="https://github.com/FarzadHayat/omakeys/releases/latest">Latest release</a>
+              <a class="btn" href="https://github.com/FarzadHayat/omakeys">Source on GitHub<span class="sr-only"> for Omakeys Keyboard</span></a>
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="contributions" class="contrib" aria-labelledby="contrib-title">
+      <h2 id="contrib-title" class="section-title"><span aria-hidden="true">## </span>Merged upstream</h2>
+      <p class="lede small">Fixes and features I added to other people's Omarchy projects.</p>
+      <ul class="prs">
+        <li><a href="https://github.com/tornikegomareli/omarchy-spaces">omarchy-spaces</a> <span class="what">see the apps on every workspace</span>
+          <ul>
+            <li><a href="https://github.com/tornikegomareli/omarchy-spaces/pull/4">Report agent status from opencode</a></li>
+            <li><a href="https://github.com/tornikegomareli/omarchy-spaces/pull/5">Report agent status from Cursor</a></li>
+            <li><a href="https://github.com/tornikegomareli/omarchy-spaces/pull/3">Reap agent badges when the reporter process dies</a></li>
+            <li><a href="https://github.com/tornikegomareli/omarchy-spaces/pull/22">Keep agent badge on one window when a pid is shared</a></li>
+            <li><a href="https://github.com/tornikegomareli/omarchy-spaces/pull/23">Icon for windows hosted by the shell</a></li>
+          </ul>
+        </li>
+        <li><a href="https://github.com/SimonSchubert/omarchy-widgets">omarchy-widgets</a> <span class="what">home-screen widgets</span>
+          <ul><li><a href="https://github.com/SimonSchubert/omarchy-widgets/pull/319">Fizzy 1.0: open cards, filters, close with undo, add cards</a></li></ul>
+        </li>
+        <li><a href="https://github.com/huacnlee/omamail">omamail</a> <span class="what">mail in the bar</span>
+          <ul><li><a href="https://github.com/huacnlee/omamail/pull/345">Fix IMAP sign-in with pasted password line breaks</a></li></ul>
+        </li>
+        <li><a href="https://github.com/akitaonrails/ai-usagebar">ai-usagebar</a> <span class="what">AI plan usage in the bar</span>
+          <ul><li><a href="https://github.com/akitaonrails/ai-usagebar/pull/268">Read a Linux Grok session keyed with Chromium's default</a></li></ul>
+        </li>
+        <li><a href="https://github.com/erikrjohansson/omamap">omamap</a> <span class="what">world map of places you've been</span>
+          <ul><li><a href="https://github.com/erikrjohansson/omamap/pull/1">Dismiss panel through the bar API</a></li></ul>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Made by <a href="https://www.farzadhayat.dev/">Farzad Hayat</a> · <a href="https://github.com/FarzadHayat">GitHub</a></p>
+    <p class="muted">Not affiliated with Omarchy. Just a fan building things for it.</p>
+  </footer>
+
+  <div id="toast" class="sr-only" aria-live="polite"></div>
+</body>
+</html>
