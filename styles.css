@@ -338,6 +338,11 @@ h1 {
 .foot p { margin: 0; }
 .muted { color: var(--muted); }
 
+/* Support */
+.support { max-width: 40rem; padding: clamp(4rem, 9vw, 6rem) 0 0; }
+.support .section-title { margin-bottom: 1rem; }
+.support p { color: var(--fg2); margin: 0 0 1.4rem; }
+
 /* Scroll reveal, only when JS has run */
 .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .8, .2, 1); }
 .js .reveal.in { opacity: 1; transform: none; }
