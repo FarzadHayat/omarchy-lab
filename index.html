@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Farzad's Omarchy Lab: cursors, themes, overlays and more</title>
-  <meta name="description" content="Things Farzad Hayat built for Omarchy: animated pixel cursors, a live key map overlay, a themed new tab page, the Australia and Liquid Glass themes, and the Omakeys keyboard. Each one installs in a minute.">
+  <meta name="description" content="Things Farzad Hayat built for Omarchy: a local-first voice companion, animated pixel cursors, a live key map overlay, a themed new tab page, the Australia and Liquid Glass themes, and the Omakeys keyboard. Each one installs in a minute.">
   <meta name="theme-color" content="#1a1b26">
   <link rel="canonical" href="https://omarchy.farzadhayat.dev/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://omarchy.farzadhayat.dev/">
   <meta property="og:title" content="Farzad's Omarchy Lab">
-  <meta property="og:description" content="Pixel cursors, a live key map overlay, a themed new tab page, two themes and a keyboard. Built for Omarchy, ready to install.">
-  <meta property="og:image" content="https://omarchy.farzadhayat.dev/img/social.png?v=3">
+  <meta property="og:description" content="A local-first voice companion, pixel cursors, a live key map overlay, a themed new tab page, two themes and a keyboard. Built for Omarchy, ready to install.">
+  <meta property="og:image" content="https://omarchy.farzadhayat.dev/img/social.png?v=4">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
@@ -56,9 +56,9 @@
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>6 projects · 9 merged PRs · all open source</p>
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>7 projects · 9 merged PRs · all open source</p>
         <h1 id="hero-title">Things I built to make <span class="hl">Omarchy</span> feel like mine.</h1>
-        <p class="lede">Cursors that recolor with your theme, a key map that floats over your desktop, a new tab page, two themes and a keyboard. Pick one, copy the install line, and it's yours.</p>
+        <p class="lede">A voice companion in your bar, cursors that recolor with your theme, a key map that floats over your desktop, a new tab page, two themes and a keyboard. Pick one, copy the install line, and it's yours.</p>
         <div class="cta">
           <a class="btn primary" href="#projects">Browse projects</a>
           <a class="btn" href="https://github.com/FarzadHayat">GitHub profile</a>
@@ -75,6 +75,37 @@
 
     <section id="projects" class="projects" aria-labelledby="projects-title">
       <div class="section-head"><p class="kicker">Projects</p><h2 id="projects-title" class="section-title">Install any of them in a minute.</h2></div>
+
+      <!-- Omi -->
+      <article class="win reveal" aria-labelledby="p-omi">
+        <div class="win-bar"><span class="win-name">omi</span><span class="win-tag">Python · Quickshell</span></div>
+        <div class="win-body">
+          <figure class="shot">
+            <img src="img/omi.webp" width="1400" height="788" loading="lazy" alt="Omarchy desktop with Omi in the top island bar, a floating animated Omi companion pointing at a terminal badge with a speech bubble, and the right-hand conversation and settings panel.">
+          </figure>
+          <div class="info">
+            <h3 id="p-omi">Omi</h3>
+            <p>A local-first voice assistant and animated on-screen companion for Omarchy and Hyprland. Lives in your bar, listens for "Hey Omi", and controls your desktop, browser, terminals, and T3 Code.</p>
+            <ul>
+              <li>Local streaming speech (Nemotron or Moonshine) and neural voices (Kokoro or Piper) with always-on wake word.</li>
+              <li>Works with Claude Code, OpenCode, Codex, Antigravity, Gemini CLI, or any local OpenAI-compatible model.</li>
+              <li>Floats on screen to point at windows, show live captions, and follow your Omarchy theme live.</li>
+              <li>Switch providers, voice engines, call mode, and sound effects straight from the bar panel.</li>
+            </ul>
+            <div class="install">
+              <p class="install-label">Install</p>
+              <pre><code>git clone https://github.com/FarzadHayat/omi.git
+cd omi
+uv sync
+uv run omi install</code></pre>
+              <p class="note">Download the speech models into <code>~/.local/share/omi/models/</code> (links in the README), then run <code>omi status</code>.</p>
+            </div>
+            <p class="links">
+              <a class="btn primary" href="https://github.com/FarzadHayat/omi">Source on GitHub<span class="sr-only"> for Omi</span></a>
+            </p>
+          </div>
+        </div>
+      </article>
 
       <!-- Pixel cursors -->
       <article class="win reveal" aria-labelledby="p-cursors">
